@@ -92,13 +92,62 @@ class SLL {
         }
         return display;
     }
+    min() {
+        // if the list is empty return null
+        if (this.head == null) {
+            return null;
+        }
+        var next_node = this.head;
+        var minimum = next_node.value;
+        while (next_node != null) {
+            if (next_node.value < minimum) {
+                minimum = next_node.value;
+            }
+            next_node = next_node.next;
+        }
+        return minimum;
+    }
+
+    max() {
+        // if the list is empty return null
+        if (this.head == null) {
+            return null;
+        }
+        var next_node = this.head;
+        var maximum = next_node.value;
+        while (next_node != null) {
+            if (next_node.value > maximum) {
+                maximum = next_node.value;
+            }
+            next_node = next_node.next;
+        }
+        return maximum;
+    }
+
+    average() {
+        var total = 0;
+        var value_count = 0;
+        // if the list is empty return 0
+        if (this.head == null) {
+            return total;
+        }
+        var next_node = this.head;
+        while (next_node != null) {
+            total = total + next_node.value;
+            value_count += 1;
+            next_node = next_node.next;
+        }
+        // calculate the average
+        var avg = (total / value_count);
+        return avg;
+    }
 }
 
 let myList = new SLL();
 
 myList.addNode(87);
 
-let myArray = [18,31,41,52,71,82,95,107,108,204,256,721,891];
+let myArray = [18,31,4,8,41,52,351,17,71,82,95,107,108,19,24,779,204,16,12,1021,256,721,891];
 for (i = 0; i < myArray.length; i++) {
     myNode = myList.addNode(myArray[i]);
 }
@@ -109,3 +158,9 @@ console.log("List contains " + myValue + " = " + myList.contains(myValue));
 console.log("Node Count = " + myList.NodeCount());
 
 console.log(myList.Display());
+
+console.log("Minimum value in list = " + myList.min());
+
+console.log("Maximum value in list = " + myList.max());
+
+console.log("Average of values in the list = " + myList.average());
