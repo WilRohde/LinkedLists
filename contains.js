@@ -72,12 +72,31 @@ class SLL {
         }
         return Nodes;
     }
+    Display() {
+        // if the head node is null then let them know it's empty
+        if (this.head == null) {
+            return "empty";
+        }
+        var display = "";
+        var head_node = this.head;
+        display = display + head_node.value + ", ";
+        var next_node = head_node.next;
+        while(next_node != null){
+            if (next_node.next != null) {
+                display = display + next_node.value + ", ";
+            }
+            else {
+                display = display + next_node.value;
+            }
+            next_node = next_node.next;
+        }
+        return display;
+    }
 }
 
 let myList = new SLL();
 
-let myNode = new Node(87);
-myList.addNode(myNode);
+myList.addNode(87);
 
 let myArray = [18,31,41,52,71,82,95,107,108,204,256,721,891];
 for (i = 0; i < myArray.length; i++) {
@@ -88,3 +107,5 @@ let myValue = 121;
 console.log("List contains " + myValue + " = " + myList.contains(myValue));
 
 console.log("Node Count = " + myList.NodeCount());
+
+console.log(myList.Display());
