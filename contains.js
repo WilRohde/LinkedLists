@@ -141,6 +141,64 @@ class SLL {
         var avg = (total / value_count);
         return avg;
     }
+
+    back() {
+        // if the list is empty return null
+        if (this.head == null) {
+            return null;
+        }
+
+        var next_node = this.head;
+        var last_value = next_node.value;
+        while(next_node != null) {
+            last_value = next_node.value;
+            next_node = next_node.next;
+        }
+        // should be on the last entry in the list
+        return last_value;
+    }
+
+    removeBack() {
+        // if the list is empty return null
+        if (this.head == null) {
+            return null;
+        }
+
+        // if the head is the only entry in the list
+        if (this.head.next == null) {
+            return null;
+        }
+
+        var previous_node = this.head;
+        var next_node = this.head.next;
+        while(next_node.next != null) {
+            previous_node = next_node;
+            next_node = next_node.next;
+        }
+        // next node is null, so this is the last node
+        previous_node.next = null
+
+        return this.Display();
+    }
+
+    addBack(value) {
+        var new_node = new Node(value);
+        // if the list is empty, make this the head and return the list
+        if (this.head == null) {
+            this.head = new_node;
+            return this.Display();
+        }
+
+        var current_node = this.head;
+        while (current_node.next != null) {
+            current_node = current_node.next;
+        }
+
+        // we should be on the last node
+        current_node.next = new_node;
+
+        return this.Display();
+    }
 }
 
 let myList = new SLL();
@@ -164,3 +222,9 @@ console.log("Minimum value in list = " + myList.min());
 console.log("Maximum value in list = " + myList.max());
 
 console.log("Average of values in the list = " + myList.average());
+
+console.log("Last value in the list = " + myList.back());
+
+console.log("List after the last entry is removed = " + myList.removeBack());
+
+console.log("List with the new node = " + myList.addBack(25778));
