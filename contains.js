@@ -57,6 +57,21 @@ class SLL {
         }
         return result;
     }
+
+    NodeCount() {
+        // if the head is null then the length is 0
+        if (this.head == null) {
+            return 0;
+        }
+        var Nodes = 1; // must at least have a head node 
+        var head_node = this.head;
+        var next_node = head_node.next;
+        while(next_node != null){
+            Nodes += 1;
+            next_node = next_node.next;
+        }
+        return Nodes;
+    }
 }
 
 let myList = new SLL();
@@ -70,4 +85,6 @@ for (i = 0; i < myArray.length; i++) {
 }
 
 let myValue = 121;
-console.log(myList.contains(myValue));
+console.log("List contains " + myValue + " = " + myList.contains(myValue));
+
+console.log("Node Count = " + myList.NodeCount());
