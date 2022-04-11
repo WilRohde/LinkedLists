@@ -1,0 +1,12 @@
+{
+  "name": "linkedlists",
+  "version": "1.0.0",
+  "description": "linked list exercises",
+  "main": "LinkedLists.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wil rohde",
+  "license": "ISC",
+  "type": "module"
+}
